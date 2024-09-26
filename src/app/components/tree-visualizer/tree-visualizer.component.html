@@ -1,0 +1,6 @@
+<div *ngIf="syntaxTree">
+    <app-tree-node [node]="syntaxTree" [path]="[]"></app-tree-node>
+</div>
+<div *ngIf="!syntaxTree">
+    <p>No syntax tree to display.</p>
+</div>

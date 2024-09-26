@@ -1,0 +1,29 @@
+<div>
+    <h1>Welcome to the Formulizer!</h1>
+    <h3>Input Formula</h3>
+    <p>
+        <textarea
+            cols="100"
+            rows="4"
+            [value]="formula"
+            (input)="onFormulaChange($event)"
+        >
+        </textarea
+        ><br />
+    </p>
+    <p><button (click)="updateAstView()">Parse and update AST View</button></p>
+    <h3>Syntax Tree (JSON)</h3>
+    <pre
+        style="max-height: 300px; overflow-y: auto; background-color: #eeeeee"
+        >{{ syntaxTreeJson || "No AST available." }}</pre
+    >
+    <h3>Visualizer</h3>
+    <app-tree-visualizer></app-tree-visualizer>
+    <p>
+        <button (click)="convertAstToFormula()">Convert AST to Formula</button>
+    </p>
+    <h3>Visualizer-to-Formula</h3>
+    <div class="formula-output">
+        {{ visualizerOutput }}
+    </div>
+</div>

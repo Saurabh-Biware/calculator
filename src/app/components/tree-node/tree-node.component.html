@@ -1,0 +1,47 @@
+<div class="node" [ngStyle]="getNodeStyle(node)">
+    <span>{{ getNodeLabel(node) }}</span>
+    <button (click)="confirmDelete()">Delete</button>
+</div>
+<div
+    class="children"
+    *ngIf="
+        node.left ||
+        node.right ||
+        node.expression ||
+        node.power ||
+        node.arguments
+    "
+>
+    <div *ngIf="node.left">
+        <app-tree-node
+            [node]="node.left"
+            [path]="path.concat(['left'])"
+        ></app-tree-node>
+    </div>
+    <div *ngIf="node.right">
+        <app-tree-node
+            [node]="node.right"
+            [path]="path.concat(['right'])"
+        ></app-tree-node>
+    </div>
+    <div *ngIf="node.expression">
+        <app-tree-node
+            [node]="node.expression"
+            [path]="path.concat(['expression'])"
+        ></app-tree-node>
+    </div>
+    <div *ngIf="node.power">
+        <app-tree-node
+            [node]="node.power"
+            [path]="path.concat(['power'])"
+        ></app-tree-node>
+    </div>
+    <div *ngIf="node.arguments && node.arguments.length > 0">
+        <div *ngFor="let arg of node.arguments; let i = index">
+            <app-tree-node
+                [node]="arg"
+                [path]="path.concat(['arguments', i.toString()])"
+            ></app-tree-node>
+        </div>
+    </div>
+</div>
